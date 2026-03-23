@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+html, body { height: 100%; overflow: hidden; background-color: #f7f7f8; color: #1e1e1e; }
+
+/* ── App Layout ───────────────────────────────────────────────────────── */
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 24px;
+}
+
+/* ── Top Bar ──────────────────────────────────────────────────────────── */
+#top-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #616161;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 0;
+  border: 1px solid #e0e0e0;
+  border-bottom: none;
+  background: white;
+  padding: 12px 16px;
+  border-radius: 8px 8px 0 0;
+}
+.sidebar-icon {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #616161;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+}
+.sidebar-icon::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 0;
+  bottom: 0;
+  width: 1.5px;
+  background: #616161;
+}
+.breadcrumb-active { color: #1e1e1e; font-weight: 600; }
+
+/* ── Main Workspace ───────────────────────────────────────────────────── */
+#workspace {
+  display: flex;
+  flex: 1;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+}
+
+/* ── Graph Panel ───────────────────────────────────────────────────────── */
+#graph-panel {
+  flex: 1;
+  position: relative;
+  background: #f9f9fa;
+  border-right: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.graph-controls {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.graph-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid #e0e0e0;
+  background: white;
+  color: #1e1e1e;
+}
+.graph-btn.dark {
+  background: #111;
+  color: white;
+  border-color: #111;
+}
+
+#graph-canvas { width: 100%; height: 100%; outline: none; }
+
+/* Tooltip / Node Info */
+#node-info {
+  position: absolute;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: none;
+  z-index: 20;
+  font-size: 10px;
+  color: #616161;
+  pointer-events: none; /* Let clicks pass through */
+  min-width: 220px;
+}
+.prop-row { display: flex; margin-bottom: 4px; }
+.prop-key { width: 140px; }
+.prop-val { color: #1e1e1e; }
+
+/* ── Chat Panel ────────────────────────────────────────────────────────── */
+#chat-panel {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+#chat-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.chat-title { font-size: 12px; font-weight: 600; color: #1e1e1e; }
+.chat-subtitle { font-size: 10px; color: #888; margin-top: 2px; }
+
+#messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* User Bubble */
+.msg-user { align-self: flex-end; }
+.msg-user .bubble {
+  background: #111;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px 8px 0 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  max-width: 260px;
+}
+
+/* AI Bubble */
+.msg-ai { display: flex; flex-direction: column; gap: 8px; align-self: flex-start; max-width: 280px; }
+.ai-header { display: flex; align-items: center; gap: 8px; }
+.ai-avatar {
+  width: 20px; height: 20px;
+  background: #111; color: white;
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: bold; font-size: 10px;
+}
+.ai-identity { line-height: 1.2; }
+.ai-name { font-size: 11px; font-weight: 600; color: #1e1e1e; }
+.ai-role { font-size: 10px; color: #888; }
+.msg-ai .bubble {
+  font-size: 12px; color: #1e1e1e; line-height: 1.4;
+}
+.msg-ai .bubble p { margin-bottom: 8px; }
+.msg-ai .bubble strong { font-weight: 600; color: #111; }
+
+.sql-badge {
+  font-size: 9px; background: #f0f0f0; padding: 4px 6px; border-radius: 4px; color: #666; margin-top: 4px; font-family: monospace; display: inline-block;
+}
+
+/* Chat Input */
+#chat-input-area { padding: 16px; border-top: 1px solid #e0e0e0; }
+.input-container {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.input-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #616161;
+  margin-bottom: 8px;
+}
+.status-dot { width: 6px; height: 6px; background: #34c759; border-radius: 50%; }
+
+.input-row { display: flex; align-items: center; gap: 8px; }
+#chat-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  font-family: inherit;
+  color: #1e1e1e;
+  resize: none;
+  min-height: 20px;
+  max-height: 80px;
+}
+#chat-input::placeholder { color: #aaa; }
+#send-btn {
+  background: #a3a3a3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#send-btn:hover { background: #616161; }
+#send-btn:disabled { opacity: 0.5; cursor: default; }
+
+.typing-dot {
+  display: inline-block; width: 4px; height: 4px; background: #666; border-radius: 50%; animation: blink 1s infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }

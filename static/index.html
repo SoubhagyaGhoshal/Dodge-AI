@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dodge AI - Hiring Task</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.9/dist/vis-network.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <div id="top-bar">
+    <div class="sidebar-icon"></div>
+    Mapping / <span class="breadcrumb-active">Order to Cash</span>
+  </div>
+
+  <div id="workspace">
+    <div id="graph-panel">
+      <div class="graph-controls">
+        <button class="graph-btn" onclick="network.fit()">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          Minimize
+        </button>
+        <button class="graph-btn dark" onclick="toggleOverlay()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Hide Granular Overlay
+        </button>
+      </div>
+
+      <div id="graph-canvas"></div>
+
+      <div id="node-info"></div>
+    </div>
+
+    <div id="chat-panel">
+      <div id="chat-header">
+        <div class="chat-title">Chat with Graph</div>
+        <div class="chat-subtitle">Order to Cash</div>
+      </div>
+
+      <div id="messages">
+        <div class="msg-ai">
+          <div class="ai-header">
+            <div class="ai-avatar">D</div>
+            <div class="ai-identity">
+              <div class="ai-name">Dodge AI</div>
+              <div class="ai-role">Graph Agent</div>
+            </div>
+          </div>
+          <div class="bubble">
+            <p>Hi! I can help you analyze the <strong>Order to Cash</strong> process.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="chat-input-area">
+        <div class="input-container">
+          <div class="input-status">
+            <div class="status-dot"></div>
+            Dodge AI is awaiting instructions
+          </div>
+          <div class="input-row">
+            <textarea id="chat-input" placeholder="Analyze anything" rows="1" onkeydown="handleKey(event)" oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"></textarea>
+            <button id="send-btn" onclick="sendMessage()">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

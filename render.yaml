@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: sap-o2c-graph
+    env: python
+    buildCommand: "pip install -r requirements.txt && python ingest.py"
+    startCommand: "uvicorn app:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: GEMINI_API_KEY
+        sync: false # Requires manual entry in Render dashboard
