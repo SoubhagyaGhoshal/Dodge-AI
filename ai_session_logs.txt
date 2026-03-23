@@ -1,0 +1,25 @@
+===========================================
+AI CODING SESSION LOGS 
+===========================================
+
+Please replace the contents of this file with the actual exported chat logs from your AI coding assistant (Cursor, GitHub Copilot, Gemini, Claude Code, etc).
+
+To export your logs:
+1. In your IDE, go to the AI chat panel where we built this application.
+2. Look for an "Export" button (usually at the top of the chat panel, or by clicking the three dots `...` menu).
+3. Save the exported text/markdown.
+4. Paste the text here.
+5. Commit and push:
+   git add ai_session_logs.txt
+   git commit -m "Add real AI session logs"
+   git push
+
+===========================================
+Summary of our session:
+1. Gathered requirements from the Dodge AI Notion task.
+2. Formulated a 19-table Data Ingestion pipeline into SQLite.
+3. Created a NetworkX Graph builder mapping 9 node types and 11 edge types.
+4. Built a FastAPI backend with a Gemini-powered NL-to-SQL query engine.
+5. Developed a custom vanilla JS/CSS frontend mirroring the light-themed Dodge AI mockup.
+6. Implemented guardrails enforcing the LLM strictly to the Order-to-Cash context.
+===========================================
